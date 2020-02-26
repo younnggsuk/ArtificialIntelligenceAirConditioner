@@ -1,0 +1,8 @@
+# juyter notebook
+.ipynb_checkpoints
+
+# dataset
+datasets
+
+# colab files
+colabs
