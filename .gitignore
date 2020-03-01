@@ -6,3 +6,8 @@ datasets
 
 # colab files
 colabs
+
+# models
+models/
+face_detection_model/
+saved_models/
