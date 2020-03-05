@@ -11,3 +11,6 @@ colabs
 models/
 face_detection_model/
 saved_models/
+
+# python module
+__pycache__/
