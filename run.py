@@ -12,7 +12,7 @@ def load_model(model_path):
     return model
 
 # Load face detector
-detection_model_path = './models/face_tf_trt_FP16'
+detection_model_path = './models/face_detection_model'
 face_detector = load_model(detection_model_path)
 
 # Load hand sign classifier
