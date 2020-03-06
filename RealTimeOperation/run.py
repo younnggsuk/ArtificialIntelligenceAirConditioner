@@ -26,7 +26,7 @@ def main():
     FRAME_HEIGHT = 480
 
     # Initialize webcam feed
-    video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture(2)
     if not video.isOpened():
         print("Cannot open video")
         exit()
@@ -36,7 +36,8 @@ def main():
     video.set(cv2.CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)   
 
     # Print current fps
-    print('Current FPS : ', video.get(cv2.CAP_PROP_FPS))
+    current_fps = video.get(cv2.CAP_PROP_FPS)
+    print('Current FPS : ', current_fps)
 
     hand_sign_classes = ["0_front", "1_back", "1_front", "2_back", "2_front", "5_front", "ILU"]
     command_classes = ["ON/OFF", "TEMP_DOWN", "TEMP_UP", "SPEED_DOWN", "SPEED_UP", "COMMAND", "ROTATION"]
@@ -95,7 +96,7 @@ def main():
                             visualize_box(frame, hand_area, hand_sign_classes[class_idx], 'Green')
                 
                 # Print command
-                if len(commands) != 0:
+                if len(commands) > current_fps/3:
                     command_idx = max(set(commands), key = commands.count)
                     print(command_classes[command_idx])
                     
