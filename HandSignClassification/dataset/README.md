@@ -4,19 +4,7 @@ Dataset은 여러 배경에서 손 모양을 직접 촬영한 사진을 사용�
 
 총 7가지 손모양을 촬영하였으며 이미지와 레이블은 다음과 같습니다.
 
-<img src="./class_images/0_front.JPG" alt="0_front" width="150" height="150"/>	0_front
-
-<img src="./class_images/1_back.JPG" alt="1_back" width="150" height="150"/>	1_back
-
-<img src="./class_images/1_front.JPG" alt="1_front" width="150" height="150"/>	1_front
-
-<img src="./class_images/2_back.JPG" alt="2_back" width="150" height="150"/>	2_back
-
-<img src="./class_images/2_front.JPG" alt="2_front" width="150" height="150"/>	2_front
-
-<img src="./class_images/5_front.JPG" alt="5_front" width="150" height="150"/>	5_front
-
-<img src="./class_images/ilu.JPG" alt="ilu" width="150" height="150"/>	ILU
+![hand_signs](/home/young/ML/Project/CapstoneDesign/HandSignClassification/dataset/hand_signs.png)
 
 
 
