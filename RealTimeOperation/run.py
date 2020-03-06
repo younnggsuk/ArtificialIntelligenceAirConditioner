@@ -94,7 +94,7 @@ while(True):
             # Print command
             if len(commands) != 0:
                 print(max(set(commands), key = commands.count))
-                print(commands)
+                # print(commands)
                 
             if exit_flag is True:
                 break

@@ -1,4 +1,4 @@
-# 학습시키기
+# Training
 
 ## Model 고르기
 
