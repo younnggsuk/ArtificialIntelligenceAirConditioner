@@ -2,8 +2,6 @@
 
 Tensorflow의 <a href="https://github.com/tensorflow/models/tree/master/research/object_detection">Object Detection API</a>의 학습된 모델에 Transfer learning을 이용해서 Realtime Face Detector를 만드는 과정을 정리한 문서입니다.
 
-이 과정에서 Dataset만 원하는 다른 Dataset으로 학습시키면 원하는 Object Detector를 만들 수 있습니다.
-
 ## 테스트 환경
 
 - Linux Ubuntu 18.04
@@ -18,11 +16,11 @@ Tensorflow의 <a href="https://github.com/tensorflow/models/tree/master/research
 
 - <a href='./training'>학습시키기</a><br>
 
-## 사용 데이터 :
+## 사용 데이터
 
 - <a href='http://shuoyang1213.me/WIDERFACE/'>Wider Face Dataset</a>
 
-## References:
+## References
 
 - https://github.com/tensorflow/models/tree/master/research/object_detection
 

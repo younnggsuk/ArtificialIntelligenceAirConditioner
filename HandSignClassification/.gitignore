@@ -2,7 +2,9 @@
 .ipynb_checkpoints
 
 # dataset
-dataset
+dataset/hand
+dataset/train
+dataset/val
 
 # models
 saved_models
