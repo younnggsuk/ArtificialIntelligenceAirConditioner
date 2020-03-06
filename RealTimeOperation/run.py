@@ -96,8 +96,8 @@ def main():
                 
                 # Print command
                 if len(commands) != 0:
-                    print(max(set(commands), key = commands.count))
-                    # print(commands)
+                    command_idx = max(set(commands), key = commands.count)
+                    print(command_classes[command_idx])
                     
                 if exit_flag is True:
                     break
