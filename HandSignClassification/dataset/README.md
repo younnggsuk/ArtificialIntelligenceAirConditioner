@@ -4,7 +4,7 @@ Dataset은 여러 배경에서 손 모양을 직접 촬영한 사진을 사용�
 
 총 7가지 손모양을 촬영하였으며 이미지와 레이블은 다음과 같습니다.
 
-![hand_signs](/home/young/ML/Project/CapstoneDesign/HandSignClassification/dataset/hand_signs.png)
+![hand_signs](./hand_signs.png)
 
 
 

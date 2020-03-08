@@ -26,7 +26,7 @@ OpenCV를 사용해 실시간으로 읽어들인 영상에서 앞서 구현한 �
 
 따라서 각 손모양에 따른 명령을 출력하도록 구현하였습니다.
 
-![hand_signs](/home/young/ML/Project/CapstoneDesign/RealTimeOperation/hand_signs.png)
+![hand_signs](./hand_signs.png)
 
 5_front : 명령을 내리겠다는 신호
 
@@ -48,4 +48,4 @@ ILU : 회전 (ROTATION)
 
 main 함수에서 동작하는 프로그램의 흐름은 다음과 같습니다.
 
-![flow_chart](/home/young/ML/Project/CapstoneDesign/RealTimeOperation/flow_chart.jpg)
+![flow_chart](./flow_chart.jpg)

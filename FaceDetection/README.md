@@ -16,11 +16,9 @@ Tensorflow의 <a href="https://github.com/tensorflow/models/tree/master/research
 
 ## Contents
 
-- <a href='./installation'>Object Detection API 및 Tensorflow, Python Library 설치</a><br>
-
-- <a href='./dataset'>Dataset</a><br>
-
-- <a href='./training'>Training</a><br>
+- <a href='./installation'>Object Detection API 및 Tensorflow, Python Library 설치</a>
+- <a href='./dataset'>Dataset</a>
+- <a href='./training'>Training</a>
 
 
 

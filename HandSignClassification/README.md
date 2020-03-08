@@ -17,5 +17,4 @@ Contents의 각 항목별로 간단한 설명과 함께 Jupyter Notebook 코드�
 ## Contents
 
 - [Dataset](./dataset)
-
 - [Training](./training)

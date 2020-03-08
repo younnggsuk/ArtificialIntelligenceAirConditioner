@@ -26,7 +26,8 @@ def main():
     FRAME_HEIGHT = 480
 
     # Initialize webcam feed
-    video = cv2.VideoCapture(2)
+    # video = cv2.VideoCapture(0) # laptop webcam
+    video = cv2.VideoCapture(2) # external webcam
     if not video.isOpened():
         print("Cannot open video")
         exit()

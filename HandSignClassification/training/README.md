@@ -6,7 +6,7 @@
 
 아래의 구현 코드를 통해 학습 전에 미리 인자들의 값을 조정해가며 변환된 이미지를 확인한 후 학습 데이터로 주입하였습니다.
 
-구현 코드는 `./show_augmentation_result.ipynb`에 있습니다.
+구현 코드는 `show_augmentation_result.ipynb`에 있습니다.
 
 
 
@@ -22,4 +22,4 @@ Fine tuning에 사용한 모델은분류기 학습 시 Xception, ResNet에 비�
 2. 동결 시킨 VGG16 모델의 출력을 입력으로 받는 분류기를 학습
 3. 동결 시킨 VGG16 모델의 마지막 Convolution Block을 동결 해제시킨 후 분류기와 함께 재 학습
 
-구현 코드는 `./training.ipynb`에 있습니다.
+구현 코드는 `training.ipynb`에 있습니다.
