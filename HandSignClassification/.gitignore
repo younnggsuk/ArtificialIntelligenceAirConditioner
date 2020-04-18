@@ -4,7 +4,11 @@
 # dataset
 dataset/hand
 dataset/train
+dataset/test
 dataset/val
+
+dataset/test.zip
+dataset/train.zip
 
 # models
 saved_models
