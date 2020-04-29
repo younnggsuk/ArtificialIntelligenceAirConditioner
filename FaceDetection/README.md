@@ -4,7 +4,7 @@ Face Detection 모델의 구현 과정을 정리하였다.
 
 학습에는 <a href="https://github.com/tensorflow/models/tree/master/research/object_detection">Tensorflow Object Detection API</a>의 pretrained model(ssd mobilenet-v1)을 사용하였고, Google Cloud Platform에서 NVIDIA Tesla V100 GPU 2개가 있는 VM instance를 생성하여 수행하였다.
 
-또한, 과정이 복잡하여 추후 다시 참고하기 쉽도록 tutorial 형식으로 하나하나 문서를 작성하였다.
+또한, 과정이 복잡하여 추후 다시 참고하기 쉽도록 tutorial 형식으로 정리하였다.
 
 ## Environments
 - Linux Ubuntu 18.04
