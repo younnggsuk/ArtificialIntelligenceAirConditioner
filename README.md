@@ -1,22 +1,15 @@
 # Capstone Design
+캡스톤 디자인 프로젝트로 딥러닝 영상처리를 이용한 스마트 에어컨을 만들었다.
 
-캡스톤 디자인 프로젝트로 리모컨없이 손모양을 이용해 조작할 수 있는 인공지능 에어컨을 만들었습니다.
-
-실시간 웹캠 영상에서 조작하려는 사람을 감지하고 손모양을 인식하는 모델을 만들고 구현한 내용을 정리하였습니다.
-
-
-
+여기서는 딥러닝을 이용한 영상처리 소프트웨어 구현 과정을 정리하였다.
 
 ## Contents
-
 - [Face detection](./FaceDetection)
-  - 조작하려는 사람을 감지하기 위한 얼굴 인식 모델을 만듭니다.
+  - 조작하려는 대상을 감지하기 위한 face detection model
 - [Hand sign classification](./HandSignClassification)
-  - 에어컨에 전달될 명령을 인식하기 위한 손모양 분류 모델을 만듭니다.
+  - 명령을 인식하기 위한 hand sign classification model
 - [Real time operation](./RealTimeOperation)
-  - 앞서 구현한 두 모델을 사용해 실시간 영상에 대해 동작하는 프로그램을 구현합니다.
-
-
+  - 앞서 구현한 두 모델을 실시간 영상에서 동작하도록 구현
 
 ## Results
 
