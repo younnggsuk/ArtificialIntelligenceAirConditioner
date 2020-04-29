@@ -1,25 +1,45 @@
 # Training
 
-## Data Augmentation
+## [1. Simple CNN Model](./simple_cnn.ipynb)
 
-학습에 사용할 데이터 수가 너무 적기 때문에 Keras의 ImageDataGenerator를 사용해 상하좌우 이동, zoom, 밝기 등의 변환을 적용해 data augmentation을 하였습니다.
+Keras를 사용해 간단한 CNN 모델을 training 하였다.
 
-아래의 구현 코드를 통해 학습 전에 미리 인자들의 값을 조정해가며 변환된 이미지를 확인한 후 학습 데이터로 주입하였습니다.
+학습한 모델 구조는 다음과 같다.
 
-구현 코드는 `show_augmentation_result.ipynb`에 있습니다.
+<img src="./images/hand_sign_simple_cnn.png" alt="hand_sign_simple_cnn" width="30%">
 
+## 2. Fine Tune Pre-trained Model : VGG16
 
+학습 데이터가 적으므로, Fine tuning을 수행하였다.
 
-## Training
+여기서는 Imagenet dataset에 학습된 VGG16 모델을 사용하였다. VGG16을 사용한 이유는 첫 분류기 학습 시 Xception, ResNet 등에 비해 성능이 좋았기 때문이다.
 
-적은 학습 데이터로 좋은 성능을 내기 위해 augmentation과 더불어 fine tuning을 사용하였습니다.
+### [2-1. Feature Extraction](./vgg16_feature_extraction.ipynb)
 
-Fine tuning에 사용한 모델은분류기 학습 시 Xception, ResNet에 비해 성능이 좋았던 VGG16을 사용하였습니다.
+VGG16 모델을 불러와 동결(`trainable=False`)시킨 후, VGG16 모델의 출력을 입력으로 받는 마지막 Fully Connected Layer(분류기)를 학습시킨다.
 
-### Training process
+### [2-2. Fine Tuning](./vgg16_fine_tuning.ipynb)
 
-1. 마지막 분류기를 제외한 VGG16 모델을 불러와 전체 모델을 동결
-2. 동결 시킨 VGG16 모델의 출력을 입력으로 받는 분류기를 학습
-3. 동결 시킨 VGG16 모델의 마지막 Convolution Block을 동결 해제시킨 후 분류기와 함께 재 학습
+동결 시킨 VGG16 모델의 마지막 Convolution Block(Convolution layer 4개)을 동결 해제시킨 후 분류기와 함께 재 학습
 
-구현 코드는 `training.ipynb`에 있습니다.
+학습한 전체 모델 구조는 다음과 같다.
+
+<img src="./images/hand_sign_fine_tune_vgg16.png" alt="hand_sign_fine_tune_vgg16" width="30%">
+
+## 3. Model Selection
+
+앞서 학습시킨 두 모델의 confusion matrix는 다음과 같다.
+
+**Simple CNN Model**
+<img src="./images/confusion_matrix_simple_cnn.png" alt="confusion_matrix_simple_cnn" width="50%">
+
+**Fine Tune Pre-trained Model : VGG16**
+<img src="./images/confusion_matrix_vgg16_fine_tune.png" alt="confusion_matrix_vgg16_fine_tune" width="50%">
+
+Fine tuning 모델의 성능이 조금 더 좋기는 하지만 모델의 크기가 너무 커서 실시간 영상 이미지에서 테스트 시 속도가 저하되는 문제가 있었다.
+
+따라서, 단순한 cnn 모델을 사용하기로 하였다.
+
+## [4. Train all data](./train_all_data.ipynb)
+
+앞서 구현한 Simple CNN 모델에 train, validation data 모두를 학습시킨다.
