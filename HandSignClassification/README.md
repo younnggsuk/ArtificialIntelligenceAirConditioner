@@ -13,10 +13,10 @@ Hand Sign Classification 모델의 구현 과정을 정리하였다.
 ## Contents
 
 - [Dataset](./dataset)
-    1. Dataset Preparation
-    2. Augment and Resize data
+    - Dataset Preparation
+    - Augment and Resize data
 - [Training](./training)
-    1. Simple CNN Model
-    2. Fine Tune Pre-trained Model : VGG16
-    3. Model Selection
-    4. Train all data
+    - Simple CNN Model
+    - Fine Tune Pre-trained Model : VGG16
+    - Model Selection
+    - Train all data

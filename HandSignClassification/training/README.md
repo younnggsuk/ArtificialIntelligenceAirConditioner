@@ -6,7 +6,7 @@ Keras를 사용해 간단한 CNN 모델을 training 하였다.
 
 학습한 모델 구조는 다음과 같다.
 
-<img src="./images/hand_sign_simple_cnn.png" alt="hand_sign_simple_cnn" width="30%">
+<img src="./images/hand_sign_simple_cnn.png" alt="hand_sign_simple_cnn" width="50%">
 
 ## 2. Fine Tune Pre-trained Model : VGG16
 
@@ -24,19 +24,21 @@ VGG16 모델을 불러와 동결(`trainable=False`)시킨 후, VGG16 모델의 �
 
 학습한 전체 모델 구조는 다음과 같다.
 
-<img src="./images/hand_sign_fine_tune_vgg16.png" alt="hand_sign_fine_tune_vgg16" width="30%">
+<img src="./images/hand_sign_fine_tune_vgg16.png" alt="hand_sign_fine_tune_vgg16" width="45%">
 
 ## 3. Model Selection
 
 앞서 학습시킨 두 모델의 confusion matrix는 다음과 같다.
 
 **Simple CNN Model**
-<img src="./images/confusion_matrix_simple_cnn.png" alt="confusion_matrix_simple_cnn" width="50%">
+
+<img src="./images/confusion_matrix_simple_cnn.png" alt="confusion_matrix_simple_cnn" width="45%">
 
 **Fine Tune Pre-trained Model : VGG16**
-<img src="./images/confusion_matrix_vgg16_fine_tune.png" alt="confusion_matrix_vgg16_fine_tune" width="50%">
 
-Fine tuning 모델의 성능이 조금 더 좋기는 하지만 모델의 크기가 너무 커서 실시간 영상 이미지에서 테스트 시 속도가 저하되는 문제가 있었다.
+<img src="./images/confusion_matrix_vgg16_fine_tune.png" alt="confusion_matrix_vgg16_fine_tune" width="45%">
+
+Fine tuning 모델의 성능이 조금 더 좋기는 하지만 모델의 크기가 너무 커서 실시간 영상 이미지에서 테스트 시 속도가 저하되는 문제가 있었다. 
 
 따라서, 단순한 cnn 모델을 사용하기로 하였다.
 
