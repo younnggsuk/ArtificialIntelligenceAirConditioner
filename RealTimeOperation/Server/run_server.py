@@ -13,6 +13,7 @@ from server_utils import recv_image, send_image, send_command_idx
 def main():
     if len(sys.argv) != 2:
         print("Usage : run_server.py [PORT]")
+        return
 
     # Client's ip address, port number
     client_ip = ""
