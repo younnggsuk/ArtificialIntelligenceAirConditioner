@@ -61,8 +61,8 @@ def main():
 
 
         result = np.concatenate((air_conditioner.get_display_panel(), frame), axis=1)
-        cv2.resize(result, (1024, 600), cv2.INTER_CUBIC)
-        cv2.imshow("Screen", np.concatenate((air_conditioner.get_display_panel(), frame), axis=1))
+        result = cv2.resize(result, (1024, 600), cv2.INTER_CUBIC)
+        cv2.imshow("Screen", result)
 
         # Press ESC to exit
         key = cv2.waitKey(1)
