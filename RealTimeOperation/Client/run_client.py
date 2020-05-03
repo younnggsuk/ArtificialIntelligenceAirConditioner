@@ -59,6 +59,9 @@ def main():
             # If not, only the image is received
             frame = recv_image(sock, length)
 
+
+        result = np.concatenate((air_conditioner.get_display_panel(), frame), axis=1)
+        cv2.resize(result, (1024, 600), cv2.INTER_CUBIC)
         cv2.imshow("Screen", np.concatenate((air_conditioner.get_display_panel(), frame), axis=1))
 
         # Press ESC to exit
