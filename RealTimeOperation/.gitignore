@@ -1,9 +1,6 @@
 # juyter notebook
 .ipynb_checkpoints
 
-# dataset
-datasets
-
 # models
 models/
 

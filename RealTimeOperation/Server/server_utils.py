@@ -1,9 +1,68 @@
 import cv2
+import time
 import numpy as np
 import numpy.linalg as LA
 import collections
 import tensorflow as tf
 from object_detection.utils import visualization_utils as vis_util
+
+'''
+Read data from client's socket
+'''
+def recv_data(conn, count):
+    buf = b''
+    while count:
+        newbuf = conn.recv(count)
+        if not newbuf:
+            return None
+
+        buf += newbuf
+        count -= len(newbuf)
+
+    return buf
+
+
+'''
+Receive client's webcam feed image
+'''
+def recv_image(conn):
+    length = recv_data(conn, 16)
+    stringData = recv_data(conn, int(length))
+    data = np.fromstring(stringData, dtype='uint8')
+    frame = cv2.imdecode(data, cv2.IMREAD_COLOR)
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+    return frame
+
+
+'''
+Send image to client
+'''
+def send_image(conn, frame):
+    frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+    result, encoded_img = cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+    data = np.array(encoded_img)
+    stringData = data.tostring()
+
+    conn.sendall((str(len(stringData))).encode().ljust(16) + stringData)
+
+
+'''
+Send command index to client
+'''
+def send_command_idx(conn, command_idx):
+    conn.sendall((str(1)).encode().ljust(16) + str(command_idx).encode())
+
+
+'''
+Load detection model
+'''
+def load_detection_model(model_path):
+    model = tf.saved_model.load(model_path)
+    model = model.signatures['serving_default']
+
+    return model
+
 
 '''
 Convert normalized coordinates to absolute coordinates
@@ -33,21 +92,10 @@ def get_hand_area(face_box, max_height, max_width):
     box_width  = (hand_area[3]-hand_area[1])
     box_height = (hand_area[2]-hand_area[0])
 
-    hand_area[0] -= (0.5*box_height)
-    hand_area[1] -= (1.5*box_width)
-    hand_area[2] += (1.0*box_height)
-    
-    if hand_area[0] <= 0.0:
-        hand_area[0] = 0.0
-
-    if hand_area[1] <= 0.0:
-        hand_area[1] = 0.0
-
-    if hand_area[2] >= max_height:
-        hand_area[2] = max_height
-        
-    if hand_area[3] >= max_width:
-        hand_area[3] = max_width
+    hand_area[0] = max(0.0, hand_area[0]-(0.5*box_height))
+    hand_area[1] = max(0.0, hand_area[1]-(1.5*box_width))
+    hand_area[2] = max(0.0, hand_area[2]+(1.0*box_height))
+    hand_area[3] = min(max_width, hand_area[3])
 
     return hand_area
 
@@ -57,8 +105,9 @@ Hand sign classification
 '''
 def classify_hand_sign(model, hand_area):
     # Keras model(*.h5) style 
-    input_img = cv2.resize(hand_area, (150, 150))
-    input_img = cv2.cvtColor(input_img, cv2.COLOR_RGB2BGR)
+
+    input_img = cv2.resize(hand_area, (200, 250), cv2.INTER_CUBIC)
+    # input_img = cv2.cvtColor(input_img, cv2.COLOR_BGR2RGB)
     
     input_img = np.expand_dims(input_img, axis=0)    
     input_img = input_img.astype(np.float32) / 255.
@@ -67,20 +116,8 @@ def classify_hand_sign(model, hand_area):
     
     if np.amax(preds[0]) > 0.85:
         return np.argmax(preds[0])
-    
-#     # Tensorflow Saved Model style 
-#     image = cv2.resize(image, (150, 150))
-#     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    
-#     input_img = np.expand_dims(image, axis=0)    
-#     input_img = input_img.astype(np.float32) / 255.
-#     input_tensor = tf.constant(input_img)
-    
-#     result = model(input_tensor)
-#     preds = result['dense_1'].numpy()
 
 
-    
 '''
 Get all detected face boxes
 '''
@@ -185,3 +222,4 @@ def visualize_box(bg_image, box, display_str, color):
                                               thickness=4,
                                               display_str_list=[display_str],
                                               use_normalized_coordinates=False)
+

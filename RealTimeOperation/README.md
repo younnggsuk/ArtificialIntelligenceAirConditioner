@@ -1,51 +1,32 @@
 # Real time operation
 
-OpenCV를 사용해 실시간으로 읽어들인 영상에서 앞서 구현한 모델을 사용해 명령을 받아들이도록 구현하였습니다.
+OpenCV를 사용해 실시간 영상에서 앞서 구현한 모델을 사용해 명령을 받아들이도록 구현하였다.
 
-아래의 각 파일에 구현된 함수 및 코드에 대한 설명은 주석으로 달아놓았습니다.
-
-- `my_utils.py`
-  - 얼굴 감지, 얼굴 추적, 손모양 인식 등의 함수들이 구현된 파일입니다.
-
-- `run.py`
-  - 메인함수가 있는 파일입니다.
-
-
+에어컨에 부착될 Jetson Nano에서 모든 연산을 처리하기에는 무리가 있으므로 Google Cloud Platform의 VM에서 처리하도록 소켓 통신으로 구현하였다.
 
 ## Environments
-
 - Linux Ubuntu 18.04
 - tensorflow 2.1.0
 - python 3.7.6
 
+## [Client](./Client)
+Client의 구현 내용은 다음과 같다.
 
+`run_client.py`
+- Webcam 영상 이미지를 server로 전송 후 처리된 결과 및 명령을 받아 display에 그리는 main() 함수
 
-## Commands
+`client_utils.py`
+- 에어컨의 동작 및 현재 상태가 표시된 control panel을 관리하는 AirConditioner 클래스
+- Server와 데이터를 주고 받는 함수들
 
-7가지 손모양이 의미하는 명령의 역할은 다음과 같습니다.
+## [Server](./Server)
+Server의 구현 내용은 다음과 같다.
 
-따라서 각 손모양에 따른 명령을 출력하도록 구현하였습니다.
+`run_server.py`
+- Client의 영상 이미지를 받아 face detection & tracking을 하며, hand area(face의 오른쪽 영역)에 대해 classification을 수행
+- 위 과정에서 hand area의 bounding box가 그려진 영상 이미지를 계속해서 client로 전송하고, classification 결과(command)가 나오면 영상 이미지와 같이 전송
 
-![hand_signs](./hand_signs.png)
-
-5_front : 명령을 내리겠다는 신호
-
-0_front : 켜기 / 끄기 (ON/OFF)
-
-1_back : 온도 감소 (TEMP_DOWN)
-
-1_front : 온도 증가 (TEMP_UP)
-
-2_back : 풍량 감소 (SPEED_DOWN)
-
-2_front : 풍량 증가 (SPEED_UP)
-
-ILU : 회전 (ROTATION)
-
-
-
-## Flow chart
-
-main 함수에서 동작하는 프로그램의 흐름은 다음과 같습니다.
-
-![flow_chart](./flow_chart.jpg)
+`server_utils.py`
+- Face detection, tracking
+- Hand sign classification
+- Client와 데이터를 주고 받는 함수들
