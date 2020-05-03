@@ -28,6 +28,9 @@ def main():
     if not cap.isOpened():
         print("Cannot open video")
         exit()
+
+    cv2.namedWindow('Screen', cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty('Screen', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     
     # Initialize AirConditioner object
     air_conditioner = AirConditioner()
