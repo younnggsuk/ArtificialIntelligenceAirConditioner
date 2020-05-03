@@ -49,12 +49,12 @@ def main():
                 target_face_box = find_face_box_to_track(hand_sign_classifier, frame, face_boxes)
 
                 if target_face_box is not None:
-                    # Start command mode for 5 seconds
+                    # Start command mode for 3 seconds
                     send_command_idx(conn, 5)
 
                     start_wait = time.time()
                     commands = []
-                    while(time.time() - start_wait < 5):
+                    while(time.time() - start_wait < 3):
                         send_image(conn, frame)
                         frame = recv_image(conn)
 
