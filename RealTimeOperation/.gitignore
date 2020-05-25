@@ -6,3 +6,6 @@ models/
 
 # python module
 __pycache__/
+
+# run_local
+run_local.py
