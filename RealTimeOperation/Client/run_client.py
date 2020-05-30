@@ -7,11 +7,20 @@ import numpy as np
 from client_utils import AirConditioner
 from client_utils import recv_data, recv_command_index, recv_image, send_image
 
+# Arduino
+import serial
+
+PORT = '/dev/ttyACM0'
+BaudRate = 9600
+
 
 def main():
     if len(sys.argv) != 3:
         print("Usage : run_client.py [IP] [PORT]")
         return    
+
+    # Arduino Serial Setting
+    ARD = serial.Serial(PORT, BaudRate)
 
     # Server's ip address, port number
     server_ip = sys.argv[1]
@@ -47,6 +56,7 @@ def main():
         if length == 1:
             # Receive command index
             command_index = recv_command_index(sock, length)
+            ARD.write(str(command_index).encode('utf-8'))
 
             # Receive image
             length = int(recv_data(sock, 16))
@@ -71,6 +81,7 @@ def main():
 
     cv2.destroyAllWindows()
     sock.close()
+    
 
 if __name__ == '__main__':
     # execute only if run as a script
