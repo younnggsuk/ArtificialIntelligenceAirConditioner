@@ -1,7 +1,7 @@
-# Capstone Design
-캡스톤 디자인 프로젝트로 딥러닝 영상처리를 이용한 스마트 에어컨을 만들었다.
+# Artificial Intelligence Air Conditioner
+캡스톤 디자인 프로젝트로 손제스쳐를 인식해 동작하는 인공지능 에어컨을 만들었다.
 
-여기서는 딥러닝을 이용한 영상처리 소프트웨어 구현 과정을 정리하였다.
+여기서는 딥러닝을 이용한 컴퓨터비전 소프트웨어 구현 과정을 정리하였다.
 
 ## Contents
 - [Face detection](./FaceDetection)
@@ -13,4 +13,6 @@
 
 ## Results
 
-결과 영상 추가 예정
+팬을 가동하는 아두이노와 통신하며 동작하는 영상입니다.
+
+[![Video Label](./images/thumbnail.jpg)](https://www.youtube.com/watch?v=DRHrXjBnjls)
