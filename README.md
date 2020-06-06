@@ -15,4 +15,4 @@
 
 팬을 가동하는 아두이노와 통신하며 동작하는 영상입니다.
 
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=DRHrXjBnjls" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
+[<img src="https://img.youtube.com/vi/DRHrXjBnjls/sddefault.jpg" alt="thumbnail" width="320">](https://www.youtube.com/watch?v=DRHrXjBnjls)
